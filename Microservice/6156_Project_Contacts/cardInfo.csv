@@ -1,0 +1,4 @@
+cardNo,accountId,cvc,expirationDate,holderFirst,holderLast,cardType,billingAddressId
+1234567812345678,123,111,10/25,Clarence,Jiang,D,1
+2234567822345678,456,222,11/25,Brian,Hello,C,2
+3234567842345678,789,333,12/25,Donald,Ferguson,C,3

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="width: 60rem">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3>Order Information</h3>
+            </div>
+            <div class="col">
+              <button class="btn btn-link collapsed float-end" data-toggle="collapse" data-target="#collapse-L1"
+                      aria-expanded="true" aria-controls="collapse1" (click)="toggleCard('order')">
+                <!-- Hello -->
+                <i class="fa fa-plus-square" style="font-size:18px;color:black"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="toggleOrder">Type in Order ID : <input type="text" class="form-control"
+                                                    [(ngModel)]="orderID">
+          <p></p>
+            <button type="button" (click)="onLookup()" class="btn btn-primary">Search</button>
+          <button type="button" (click)="onShowAdd()" class="btn btn-primary">Add</button>
+          <div>{{notice}}</div>
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Shop ID</th>
+              <th scope="col">Product ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="card-body" *ngIf="toggleAdd">
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addOrderID"></td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addShopID "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addProductID"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addDate"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addNum"></td>
+              <td><button type="button" (click)="onAdd()" class="btn btn-primary">Add</button></td>
+            </tr>
+
+            <tr class="card-body" *ngIf="toggleUpdate">
+              <td>{{updateOrderID}}</td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateShopID "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateProductID"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateDate"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateNum"></td>
+              <td><button type="button" (click)="onUpdate()" class="btn btn-primary">Update</button></td>
+            </tr>
+            <tr *ngFor="let p of ordersInfo; index as i">
+              <td>
+                {{ p.orderID }}
+              </td>
+              <td>{{p.shopID }}</td>
+              <td>{{ p.productID }}</td>
+              <td>{{ p.date }}</td>
+              <td>{{p.num }}</td>
+              <td><button type="button" (click)="onDelete(p.orderID)"  class="btn btn-primary">Delete</button></td>
+              <td><button type="button" (click)="onShowUpdate(p.orderID)" class="btn btn-primary">Update</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="width: 60rem">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3>Product Information</h3>
+            </div>
+            <div class="col">
+              <button class="btn btn-link collapsed float-end" data-toggle="collapse" data-target="#collapse-L1"
+                      aria-expanded="true" aria-controls="collapse1" (click)="toggleCard('product')">
+                <!-- Hello -->
+                <i class="fa fa-plus-square" style="font-size:18px;color:black"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="toggleProduct">Type in Product ID : <input type="text" class="form-control"
+                                                    [(ngModel)]="productID">
+          <p></p>
+            <button type="button" (click)="onLookup()" class="btn btn-primary">Search</button>
+          <button type="button" (click)="onShowAdd()" class="btn btn-primary">Add</button>
+          <div>{{notice}}</div>
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Product ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="card-body" *ngIf="toggleAdd">
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addProductID"></td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addProductName "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addPrice"></td>
+              <td><button type="button" (click)="onAdd()" class="btn btn-primary">Add</button></td>
+            </tr>
+
+            <tr class="card-body" *ngIf="toggleUpdate">
+              <td>{{updateProductID}}</td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateProductName "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updatePrice"></td>
+              <td><button type="button" (click)="onUpdate()" class="btn btn-primary">Update</button></td>
+            </tr>
+            <tr *ngFor="let p of productsInfo; index as i">
+              <td>
+                {{ p.productID }}
+              </td>
+              <td>{{p.product_name }}</td>
+              <td>{{ p.price }}</td>
+              <td><button type="button" (click)="onDelete(p.productID)"  class="btn btn-primary">Delete</button></td>
+              <td><button type="button" (click)="onShowUpdate(p.productID)" class="btn btn-primary">Update</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="width: 60rem">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3>Payment Information</h3>
+            </div>
+<!--            <div class="col">-->
+<!--              <button class="btn btn-link collapsed float-end" data-toggle="collapse" data-target="#collapse-L1"-->
+<!--                      aria-expanded="true" aria-controls="collapse1" (click)="toggleCard('artist')">-->
+<!--                &lt;!&ndash; Hello &ndash;&gt;-->
+<!--                <i class="fa fa-plus-square" style="font-size:18px;color:black"></i></button>-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="card-body">
+            <label>Type in a customer's accountId: </label><input type="text" class="form-control"
+                                                    [(ngModel)]="accountId">
+          <p></p>
+            <button type="button" (click)="onLookup()" class="btn btn-primary">Search</button>
+          <!-- You typed: <span *ngIf="artistName"> "{{ artistName }}" </span> -->
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col" style = "padding-right: 100px">Account Id</th>
+              <th scope="col" style = "padding-right: 100px">Card Number</th>
+              <th scope="col" style = "padding-right: 100px">CVC</th>
+              <th scope="col" style = "padding-right: 100px">Expiration Date</th>
+              <th scope="col" style = "padding-right: 100px">First Name</th>
+              <th scope="col" style = "padding-right: 100px">Last Name</th>
+              <th scope="col" style = "padding-right: 100px">Card Type(Debit VS Credit)</th>
+              <th scope="col">Billing Address ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of paymentsInfo; index as i">
+              <td>
+                {{ p.accountId }}
+              </td>
+              <td style="padding-right: 20px">{{p.cardNo }}</td>
+              <td style="padding-right: 20px">{{ p.cvc }}</td>
+              <td style="padding-right: 20px">{{p.expirationDate }}</td>
+              <td style="padding-right: 20px">{{ p.holderFirst }}</td>
+              <td style="padding-right: 20px">{{p.holderLast }}</td>
+              <td style="padding-right: 20px">{{ p.cardType }}</td>
+              <td>{{p.billingAddressId }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+<!--        <div class="card-footer">That was cool!</div>-->
+      </div>
+    </div>
+  </div>
+</div>
+

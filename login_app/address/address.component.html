@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="width: 60rem">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3>Address Information</h3>
+            </div>
+            <div class="col">
+              <button class="btn btn-link collapsed float-end" data-toggle="collapse" data-target="#collapse-L1"
+                      aria-expanded="true" aria-controls="collapse1" (click)="toggleCard('address')">
+                <!-- Hello -->
+                <i class="fa fa-plus-square" style="font-size:18px;color:black"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="toggleAddress">Type in Address ID : <input type="text" class="form-control"
+                                                    [(ngModel)]="id">
+          <p></p>
+            <button type="button" (click)="onLookup()" class="btn btn-primary">Search</button>
+          <button type="button" (click)="onShowAdd()" class="btn btn-primary">Add</button>
+          <div>{{notice}}</div>
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Account ID</th>
+              <th scope="col">Street</th>
+              <th scope="col">Apt Number</th>
+              <th scope="col">City</th>
+              <th scope="col">State</th>
+              <th scope="col">Zip</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="card-body" *ngIf="toggleAdd">
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addId"></td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addAccountId "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addStreet"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addAptNo"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addCity"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addState"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addZip"></td>
+              <td><button type="button" (click)="onAdd()" class="btn btn-primary">Add</button></td>
+            </tr>
+
+            <tr class="card-body" *ngIf="toggleUpdate">
+              <td>{{updateId}}</td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateAccountId "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateStreet"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateAptNo"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateCity"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateState"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateZip"></td>
+              <td><button type="button" (click)="onUpdate()" class="btn btn-primary">Update</button></td>
+            </tr>
+            <tr *ngFor="let p of addressInfo; index as i">
+              <td>
+                {{ p.id }}
+              </td>
+              <td>{{p.accountId }}</td>
+              <td>{{ p.street }}</td>
+              <td>{{ p.aptNo }}</td>
+              <td>{{p.city }}</td>
+              <td>{{p.state }}</td>
+              <td>{{p.zip }}</td>
+              <td><button type="button" (click)="onDelete(p.id)"  class="btn btn-primary">Delete</button></td>
+              <td><button type="button" (click)="onShowUpdate(p.id)" class="btn btn-primary">Update</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

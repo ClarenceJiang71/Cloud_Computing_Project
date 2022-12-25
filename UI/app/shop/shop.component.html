@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="width: 60rem">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3>Shop Information</h3>
+            </div>
+            <div class="col">
+              <button class="btn btn-link collapsed float-end" data-toggle="collapse" data-target="#collapse-L1"
+                      aria-expanded="true" aria-controls="collapse1" (click)="toggleCard('shop')">
+                <!-- Hello -->
+                <i class="fa fa-plus-square" style="font-size:18px;color:black"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="toggleShop">Type in Shop ID : <input type="text" class="form-control"
+                                                    [(ngModel)]="shopID">
+          <p></p>
+            <button type="button" (click)="onLookup()" class="btn btn-primary">Search</button>
+          <button type="button" (click)="onShowAdd()" class="btn btn-primary">Add</button>
+          <div>{{notice}}</div>
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Shop ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="card-body" *ngIf="toggleAdd">
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addShopID"></td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addName "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addPhone"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addEmail"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="addAddress"></td>
+              <td><button type="button" (click)="onAdd()" class="btn btn-primary">Add</button></td>
+            </tr>
+
+            <tr class="card-body" *ngIf="toggleUpdate">
+              <td>{{updateShopID}}</td>
+
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateName "></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updatePhone"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateEmail"></td>
+              <td><input type="text" class="form-control"
+                                                    [(ngModel)]="updateAddress"></td>
+              <td><button type="button" (click)="onUpdate()" class="btn btn-primary">Update</button></td>
+            </tr>
+            <tr *ngFor="let p of shopsInfo; index as i">
+              <td>
+                {{ p.shopID }}
+              </td>
+              <td>{{p.name }}</td>
+              <td>{{ p.phone }}</td>
+              <td>{{ p.email }}</td>
+              <td>{{p.address }}</td>
+              <td><button type="button" (click)="onDelete(p.shopID)"  class="btn btn-primary">Delete</button></td>
+              <td><button type="button" (click)="onShowUpdate(p.shopID)" class="btn btn-primary">Update</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
